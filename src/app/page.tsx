@@ -37,7 +37,7 @@ export default function HomePage() {
   const debouncedSearch = useDebounce(search, 500);
 
   // Assuming 'data' is fetched from React Query
-  const filteredCoins = (data ?? [])?.filter((coin: any) =>
+  const filteredCoins = (data ?? [])?.filter((coin) =>
     coin.name.toLowerCase().includes(debouncedSearch.toLowerCase())
   );
 
@@ -71,7 +71,7 @@ export default function HomePage() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredCoins.map((coin: any) => (
+            {filteredCoins.map((coin) => (
               <TableRow
                 key={coin.id}
                 hover
