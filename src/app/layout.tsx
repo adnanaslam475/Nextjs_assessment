@@ -1,7 +1,11 @@
+// 'use client'
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import { theme } from '@/theme/muiTheme'
+import ReactQueryClientProvider from "./providers/ReactQueryClientProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,16 +23,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body>
+        <ReactQueryClientProvider>
+          {children}
+        </ReactQueryClientProvider>
       </body>
     </html>
-  );
+  )
 }
